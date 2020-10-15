@@ -2,7 +2,7 @@ import javax.print.Doc;
 
 public class Doctor {
     //Atributos
-    int id;
+    static int id = 0; // Autoincrement
     String name;
     String speciality;
 
@@ -10,8 +10,10 @@ public class Doctor {
         System.out.println("Construyendo el Objeto Doctor");
     }
 
-    Doctor(String name){
-        System.out.println("El nombre del Doctor asignado es: " + name);
+    Doctor(String name, String speciality){
+        id++;
+        this.name = name;
+        this.speciality = speciality;
     }
 
     //Comportamientos
