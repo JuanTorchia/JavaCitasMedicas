@@ -1,7 +1,9 @@
+package ui;
+
 import java.util.Scanner;
 
 public class UiMenu {
-    static void showMenu(){
+    public static void showMenu(){
         System.out.println("Welcome to My Appointments");
         System.out.println("Selecciona la opción deseada");
 

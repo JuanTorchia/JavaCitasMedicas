@@ -1,24 +1,25 @@
+import javax.print.Doc;
+
 public class Doctor {
     //Atributos
-    static int id = 0;
+    int id;
     String name;
     String speciality;
 
     Doctor(){
-        System.out.println("Construyendo el objeto Doctor");
-        id++;
+        System.out.println("Construyendo el Objeto Doctor");
     }
 
     Doctor(String name){
-        System.out.println("El nombre del medico asignado es: " + name);
+        System.out.println("El nombre del Doctor asignado es: " + name);
     }
 
-    //Compartamientos
+    //Comportamientos
     public void showName(){
         System.out.println(name);
     }
-
     public void showId(){
-        System.out.println("ID Doctor: " + id);
+        System.out.println("El id del medico asignado es: " + id);
     }
+
 }
