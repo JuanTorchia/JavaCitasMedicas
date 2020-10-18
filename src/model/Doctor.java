@@ -1,4 +1,5 @@
-import javax.print.Doc;
+package model;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -7,9 +8,9 @@ public class Doctor extends User {
     //Atributo
     private String speciality;
 
-    Doctor(String name, String email){
+    public Doctor(String name, String email){
         super(name,email);
-        System.out.println("Construyendo el Objeto Doctor");
+        System.out.println("Construyendo el Objeto model.Doctor");
 
         this.speciality = speciality;
     }
