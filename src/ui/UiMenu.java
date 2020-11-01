@@ -1,12 +1,18 @@
 package ui;
 
 import com.sun.org.apache.xerces.internal.impl.xs.util.XInt;
+import model.Doctor;
+import model.Patient;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UiMenu {
 
     public static final String[] MONTHS = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Agosto","Septiembre","Octubre","Noviemebre","Diciembre"};
+
+    public static Doctor doctorLogged;
+    public static Patient patientLogged;
 
     public static void showMenu(){
         System.out.println("Welcome to My Appointments");
@@ -14,8 +20,8 @@ public class UiMenu {
 
         int response = 0;
         do {
-            System.out.println("1. model.Doctor");
-            System.out.println("2. model.Patient");
+            System.out.println("1. Doctor");
+            System.out.println("2. Patient");
             System.out.println("0. Salir");
 
             Scanner sc = new Scanner(System.in);
@@ -23,11 +29,13 @@ public class UiMenu {
 
             switch (response){
                 case 1:
-                    System.out.println("model.Doctor");
+                    System.out.println("Doctor");
+                    response = 0;
+                    authUser(1);
                     break;
                 case 2:
                     response = 0;
-                    showPatientMenu();
+                    authUser(2);
 
                     break;
                 case 0:
@@ -37,6 +45,52 @@ public class UiMenu {
                     System.out.println("Please select a correct answer");
             }
         }while (response != 0);
+    }
+
+    private static void authUser(int userType){
+        //userType = 1 Doctor
+        //userType = 2 Patient
+
+        ArrayList<Doctor> doctors = new ArrayList<>();
+        doctors.add(new Doctor("Juanchi","juan@mail.com"));
+        doctors.add(new Doctor("Karen Sosa","karen@mail.com"));
+        doctors.add(new Doctor("Rocio Laterp", "rocio@mail.com"));
+
+        ArrayList<Patient> patients = new ArrayList<>();
+        patients.add(new Patient("Carlos","carlos@mail.com"));
+        patients.add(new Patient("Jose","jose@mail.com"));
+        patients.add(new Patient("Enrique","enrique@mail.com"));
+
+        boolean emailCorrect = false;
+        do {
+            System.out.println("Insert your email: juanperez@mail.com");
+            Scanner sc = new Scanner(System.in);
+            String email = sc.nextLine();
+            if (userType == 1){
+                for (Doctor d: doctors){
+                    if (d.getEmail().equals(email)){
+                        emailCorrect = true;
+                        //Obtener el usuario Logeado
+                        doctorLogged = d;
+                        // Show Doctor Menu
+                    }
+                }
+            }
+
+            if (userType == 2){
+                for (Patient p: patients){
+                    if (p.getEmail().equals(email)){
+                        emailCorrect = true;
+                        patientLogged = p;
+                        //Show Patient Menu
+                    }
+                }
+
+            }
+
+
+        }while(!emailCorrect);
+
     }
 
     static void showPatientMenu(){
